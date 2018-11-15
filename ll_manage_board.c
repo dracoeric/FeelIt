@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/15 14:42:18 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/15 14:58:13 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,14 @@ static	void	fill_board(t_board *board)
 		return;
 	while (i < board->size + 3)
 	{
-		j = 2;
-		while (j < board->size + 2)
+		j = 0;
+		while (j < board->size)
 		{
 			board->mat[i][j] = '.';
 			j++;
 		}
-		board->mat[i][0] = '\0';
-		board->mat[i][1] = '\0';
-		board->mat[i][board->size + 2] = '\n';
-		board->mat[i][board->size + 3] = '\0';
+		board->mat[i][board->size] = '\n';
+		board->mat[i][board->size + 1] = '\0';
 		i++;
 	}
 }
@@ -67,7 +65,7 @@ int 			bigger_board(t_board *board, int nb_piece)
 	i = 0;
 	while (i < size + 3)
 	{
-		if (!(board->mat[i] = (char *)malloc(sizeof(char) * (size + 4))))
+		if (!(board->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
 			return (-1);
 	}
 	fill_board(board, board->size + 3);
