@@ -6,13 +6,17 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 16:00:21 by erli              #+#    #+#              #
-#    Updated: 2018/11/16 16:16:36 by erli             ###   ########.fr        #
+#    Updated: 2018/11/16 16:26:55 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME	=	fillit
 
 SRCS	=	ll_search_sol.c		ll_manage_piece.c	ll_manage_board.c	\
+			ft_putchar.c		ft_putnbr.c			ft_putstr.c			\
+			ft_strclr.c			add_piece_lst.c		lst_last.c			\
+			lst_manipulators.c	valid_input.c		read_input.c		\
+			read_input.c		main_read_input.c
 
 OBJSDIR	=	objs
 

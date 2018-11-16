@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:30:01 by gly               #+#    #+#             */
-/*   Updated: 2018/11/15 16:57:05 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 12:58:47 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 # include <stdlib.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 
-typedef	struct		s_pos
+# define BUFF_SIZE 20
+
+typedef struct		s_pos
 {
 	int				row;
 	int				col;
@@ -44,5 +49,16 @@ void	remoce_piece(t_board *board, t_piece *piece);
 void	place_piece(t_board *board, t_piece *piece);
 int		test_pos(t_board *board, t_piece *piece);
 int		advance_pos(t_board *bard, t_piece *piece);
+
+void	ft_putchar(char c);
+void	ft_putstr(const char *str);
+void	ft_putnbr(int n);
+void	ft_strclr(char *s);
+t_piece	*lst_last(t_piece **lst);
+
+int		add_piece_lst(t_piece **lst, char *buff);
+int		valid_input(char *buff);
+int		read_input(char *input, t_piece **lst);
+
 
 #endif
