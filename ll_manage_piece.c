@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 17:23:54 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 17:48:13 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		advance_pos(t_board *board, t_piece *piece)
 	}
 	if (piece->pos.col + piece->col > board->size)
 	{
-		piece->pos.row++;;
-		piece->pos.col = 0;
+		piece->pos.row++;
+		piece->pos.col = -1;
 	}
 	if (piece->pos.row + piece->row > board->size)
 	{
@@ -100,6 +100,7 @@ int		advance_pos(t_board *board, t_piece *piece)
 		piece->pos.col = -1;
 		return (-1);
 	}
+	piece->pos.col++;
 	return (1);
 }
 
