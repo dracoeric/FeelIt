@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:48:57 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 15:55:32 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 16:36:41 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int		search_sol(t_piece *first_piece)
 	to_place = first_piece;
 	while (to_place != NULL)
 	{
-		board = bigger_board;
+		board = bigger_board(board, nb_of_piece(first_piece));
 		advance_pos(board, to_place);
 		place_piece(board, to_place);
-		to_piece = to_piece->next;
+		to_place = to_place->next;
 		while (first_piece->pos.row >= 0 && to_place != NULL)
 		{
 			while (!test_pos(board, to_place) && first_piece->pos.row >= 0)

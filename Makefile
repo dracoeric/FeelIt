@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 16:00:21 by erli              #+#    #+#              #
-#    Updated: 2018/11/16 16:26:55 by erli             ###   ########.fr        #
+#    Updated: 2018/11/16 16:34:39 by gly              ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,7 +20,7 @@ SRCS	=	ll_search_sol.c		ll_manage_piece.c	ll_manage_board.c	\
 
 OBJSDIR	=	objs
 
-OBS		=	$(addprefix &(OBJSDIR)/, %(SRCS:.c=.o);
+OBJS		=	$(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
 CC		=	gcc
 
@@ -36,7 +36,7 @@ all		:	$(NAME)
 $(NAME)	:	$(OBJS) fillit.h
 			$(CC) $(CFLAG) $(INCL) $(OBJS) -o $(NAME)
 
-%.o		:	%.c
+$(OBJSDIR)/%.o		:	%.c
 			$(CC) $(CFLAG) $(INCL) $< -o $@
 
 clean	:
