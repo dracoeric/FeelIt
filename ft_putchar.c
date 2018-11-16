@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_read_input.c                                  :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:20:55 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 12:58:58 by gly              ###   ########.fr       */
+/*   Created: 2018/11/06 11:47:44 by gly               #+#    #+#             */
+/*   Updated: 2018/11/16 13:00:25 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int ac, char **av)
+void	ft_putchar(char c)
 {
-	int		value;
-	t_piece **lst;
-
-	if (ac != 2)
-		return (0);
-	lst = malloc(sizeof(t_piece *));
-	value = read_input(av[1], lst);
-	ft_putnbr(value);
-	return (1);
+	write(1, &c, 1);
 }

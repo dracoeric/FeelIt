@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_read_input.c                                  :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:20:55 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 12:58:58 by gly              ###   ########.fr       */
+/*   Created: 2018/11/07 16:22:55 by gly               #+#    #+#             */
+/*   Updated: 2018/11/16 12:14:28 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int		main(int ac, char **av)
+void	ft_strclr(char *s)
 {
-	int		value;
-	t_piece **lst;
+	int	i;
 
-	if (ac != 2)
-		return (0);
-	lst = malloc(sizeof(t_piece *));
-	value = read_input(av[1], lst);
-	ft_putnbr(value);
-	return (1);
+	if (s == 0)
+		return ;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		s[i] = '\0';
+		i++;
+	}
 }

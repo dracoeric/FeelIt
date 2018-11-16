@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_read_input.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:20:55 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 12:58:58 by gly              ###   ########.fr       */
+/*   Created: 2018/11/07 12:06:16 by gly               #+#    #+#             */
+/*   Updated: 2018/11/16 13:00:01 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int ac, char **av)
+void	ft_putnbr(int n)
 {
-	int		value;
-	t_piece **lst;
-
-	if (ac != 2)
-		return (0);
-	lst = malloc(sizeof(t_piece *));
-	value = read_input(av[1], lst);
-	ft_putnbr(value);
-	return (1);
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+		return ;
+	}
+	ft_putchar(n + 48);
 }

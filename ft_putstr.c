@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_read_input.c                                  :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:20:55 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 12:58:58 by gly              ###   ########.fr       */
+/*   Created: 2018/11/06 09:21:28 by gly               #+#    #+#             */
+/*   Updated: 2018/11/07 13:24:58 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_putstr(const char *str)
 {
-	int		value;
-	t_piece **lst;
+	int	i;
 
-	if (ac != 2)
-		return (0);
-	lst = malloc(sizeof(t_piece *));
-	value = read_input(av[1], lst);
-	ft_putnbr(value);
-	return (1);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 }
