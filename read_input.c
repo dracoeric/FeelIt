@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:52:14 by gly               #+#    #+#             */
-/*   Updated: 2018/11/15 16:55:00 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/16 11:20:37 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ t_piece	*fill_piece(t_piece *new, char *buff, start)
 			return (NULL);
 		j = 0;
 		while (j < new->col)
-		new->form[i][j] = buff[i * 5 + j]; // c'est faux mais j'en ai marre
+		{
+			new->form[i][j] = buff[start + j + i * 5];
+			j++;
+		}
+		i++;
 	}
+	return (new);
 }
 
-		
+
 t_piece	*piece_new(char *buff)
 {
 	int		i;
@@ -67,21 +72,12 @@ int		add_piece(t_piece **lst, char *buff)
 	t_piece	*elem;
 	t_piece	*last;
 
-	if (!(elem = create_new_piece(buff)
+	if (!(elem = create_new_piece(buff)))
 		return (-1);
 	last = lst_last(lst);
 	last->next = elem;
-
-	
-
-	
-
-			start.row = start.row == -1 ? i / 5 : start.row;
-			start.col = start.col == -1 ? i % 5 : start.col;
-			end.row = i / 5;
-			end.col = i % 5;
-		}
-
+	elem->prev = last;
+}
 
 int		adjacent_pound(int i, char *buff)
 {
@@ -135,7 +131,7 @@ int		valid_input(char *buff, t_piece **lst)
 int		open_input(char *input)
 {
 	int		fd;
-	
+
 	fd = open(input, O_RDONLY);
 	return (fd);
 }
