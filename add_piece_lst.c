@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:02:25 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 14:47:21 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/16 16:27:27 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static t_piece	*new_piece(char *buff, char c)
 	{
 		if (buff[i] == '#')
 		{
-			start = start == -1 ? i : start;
-			end = i;
+			start = start % 5 <= i % 5 ? start : (i % 5) + (start / 5) * 5;
+			end = end + ((i - end) / 5) * 5;
 		}
 		i = (i - 3) % 5 ? i + 1 : i + 2;
 	}
@@ -63,7 +63,7 @@ static t_piece	*new_piece(char *buff, char c)
 	new->pos.col = -1;
 	new->row = (end - start) / 5 + 1;
 	new->col = end % 5 - start % 5 + 1;
-	new = fill_piece(new, buff, start);
+	new = fill_piece(new, buff, start, c);
 	return (new);
 }
 
@@ -71,10 +71,8 @@ int				add_piece_lst(t_piece **lst, char *buff, char c)
 {
 	t_piece	*elem;
 	t_piece	*last;
-	char	c;
 
-
-	if (!(elem = new_piece(buff, char c)))
+	if (!(elem = new_piece(buff, c)))
 		return (0);
 	if (*lst == 0)
 		*lst = elem;
