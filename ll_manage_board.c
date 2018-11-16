@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 16:58:36 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 17:40:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static	void	fill_board(t_board *board)
 		board->mat[i][board->size + 1] = '\0';
 		i++;
 	}
-	
 }
 
 int 			bigger_board(t_board **board, int nb_piece)
@@ -80,6 +79,7 @@ int 			bigger_board(t_board **board, int nb_piece)
 			}
 			return (-1);
 		}
+		i++;
 	}
 	fill_board(*board);
 	(*board)->size = size;
