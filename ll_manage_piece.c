@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 17:04:07 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 17:09:06 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	remove_piece(t_board *board, t_piece *piece)
 	int j;
 
 	if (board == NULL || piece == NULL)
-		return;
+		return ;
 	i = 0;
 	while (i < piece->col)
 	{
@@ -39,7 +39,7 @@ void	place_piece(t_board *board, t_piece *piece)
 	int j;
 
 	if (board == NULL || piece == NULL)
-		return;
+		return ;
 	i = 0;
 	while (i < piece->col)
 	{
@@ -62,8 +62,6 @@ int		test_pos(t_board *board, t_piece *piece)
 	int row;
 	int col;
 
-	if (board == NULL || piece == NULL)
-		return;
 	row = piece->pos.row;
 	col = piece->pos.col;
 	i = 0;
@@ -85,8 +83,6 @@ int		test_pos(t_board *board, t_piece *piece)
 
 int		advance_pos(t_board *board, t_piece *piece)
 {
-	if (board == NULL || piece == NULL)
-		return;
 	if (piece->pos.row == -1)
 	{
 		piece->pos.row = 0;
