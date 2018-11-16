@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 15:57:33 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 16:42:10 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,39 @@ static	void	fill_board(t_board *board)
 	
 }
 
-int 			bigger_board(t_board *board, int nb_piece)
+int 			bigger_board(t_board **board, int nb_piece)
 {
 	int		size;
 	int 	i;
 
-	size = (!board ? smaller_square_size(nb_piece) : board->size + 1);
-	if (board != NULL)
-		free_mat(board->mat);
+	size = (!*board ? smaller_square_size(nb_piece) : board->size + 1);
+	if (*board != NULL)
+		free_mat((*board)->mat);
 	else
 	{
-		if (!(board = (t_board *)malloc(sizeof(T_board))))
+		if (!((*board) = (t_board *)malloc(sizeof(T_board))))
 			return (-1);
 	}
-	if (!(board->mat = (char **)malloc(sizeof(char *) * (size + 3))))
+	if (!((*board)->mat = (char **)malloc(sizeof(char *) * (size + 3))))
+	{
+		free(*board);
 		return (-1);
+	}
 	i = 0;
 	while (i < size + 3)
 	{
-		if (!(board->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
+		if (!((*board)->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
+		{
+			while (i > 0)
+			{
+				free((*board)->mat[i]);
+				i--;
+			}
 			return (-1);
+		}
 	}
-	fill_board(board, board->size + 3);
-	board->size = size;
+	fill_board(*board, board->size + 3);
+	(*board)->size = size;
 	return (0);
 }
 
