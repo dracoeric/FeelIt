@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 16:42:10 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 16:50:59 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static	void	fill_board(t_board *board)
 	int i;
 	int j;
 
+	i = 0;
 	if (board == NULL)
 		return;
 	while (i < board->size + 3)
@@ -38,7 +39,7 @@ static	void	fill_board(t_board *board)
 		j = 0;
 		while (j < board->size)
 		{
-			board->mat[i][j] = (i < board_size ? '.' : '\0');
+			board->mat[i][j] = (i < board->size ? '.' : '\0');
 			j++;
 		}
 		board->mat[i][board->size] = '\n';
@@ -53,12 +54,12 @@ int 			bigger_board(t_board **board, int nb_piece)
 	int		size;
 	int 	i;
 
-	size = (!*board ? smaller_square_size(nb_piece) : board->size + 1);
+	size = (!*board ? smaller_square_size(nb_piece) : (*board)->size + 1);
 	if (*board != NULL)
-		free_mat((*board)->mat);
+		free_mat((*board)->mat, (*board)->size + 3);
 	else
 	{
-		if (!((*board) = (t_board *)malloc(sizeof(T_board))))
+		if (!((*board) = (t_board *)malloc(sizeof(t_board))))
 			return (-1);
 	}
 	if (!((*board)->mat = (char **)malloc(sizeof(char *) * (size + 3))))
@@ -79,7 +80,7 @@ int 			bigger_board(t_board **board, int nb_piece)
 			return (-1);
 		}
 	}
-	fill_board(*board, board->size + 3);
+	fill_board(*board);
 	(*board)->size = size;
 	return (0);
 }

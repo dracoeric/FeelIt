@@ -6,11 +6,12 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:48:57 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 16:40:55 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 16:48:25 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
 int		nb_of_piece(t_piece *list)
 {
 	int count;
@@ -39,7 +40,7 @@ int		search_sol(t_piece *first_piece)
 	to_place = first_piece;
 	while (to_place != NULL)
 	{
-		is_err = bigger_board(board, nb_of_piece(first_piece));
+		is_err = bigger_board(&board, nb_of_piece(first_piece));
 		if (is_err)
 			return (-1);
 		advance_pos(board, to_place);
@@ -63,4 +64,5 @@ int		search_sol(t_piece *first_piece)
 			}
 		}
 	}
+	return (0);
 }

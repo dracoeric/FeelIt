@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 16:00:21 by erli              #+#    #+#              #
-#    Updated: 2018/11/16 16:34:39 by gly              ###   ########.fr        #
+#    Updated: 2018/11/16 16:52:43 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,8 +15,7 @@ NAME	=	fillit
 SRCS	=	ll_search_sol.c		ll_manage_piece.c	ll_manage_board.c	\
 			ft_putchar.c		ft_putnbr.c			ft_putstr.c			\
 			ft_strclr.c			add_piece_lst.c		lst_last.c			\
-			lst_manipulators.c	valid_input.c		read_input.c		\
-			read_input.c		main_read_input.c
+			lst_manipulators.c	valid_input.c		read_input.c
 
 OBJSDIR	=	objs
 
@@ -37,7 +36,7 @@ $(NAME)	:	$(OBJS) fillit.h
 			$(CC) $(CFLAG) $(INCL) $(OBJS) -o $(NAME)
 
 $(OBJSDIR)/%.o		:	%.c
-			$(CC) $(CFLAG) $(INCL) $< -o $@
+			$(CC) -c $(CFLAG) $(INCL) $< -o $@
 
 clean	:
 			$(RM) $(OBJS)
