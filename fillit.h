@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:30:01 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 17:24:13 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 18:10:10 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+
+# include <stdio.h>
 
 # define BUFF_SIZE 20
 

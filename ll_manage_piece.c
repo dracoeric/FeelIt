@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 17:48:13 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 18:11:04 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	print_piece(t_piece *piece)
 
 	if (piece == NULL)
 		return ;
+	printf("Col: %i, row: %i\n", piece->col, piece->row);
 	i = 0;
 	while (i < piece->row)
 	{

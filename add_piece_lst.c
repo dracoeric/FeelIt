@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:02:25 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 16:27:27 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/16 18:24:38 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ static t_piece	*new_piece(char *buff, char c)
 
 	i = 0;
 	start = -1;
+	end = 0;
 	while (i < 19)
 	{
 		if (buff[i] == '#')
 		{
+			start = start == -1 ? i : start;
 			start = start % 5 <= i % 5 ? start : (i % 5) + (start / 5) * 5;
-			end = end + ((i - end) / 5) * 5;
+			end = end + (i - end) % 5 + ((i - end) / 5) * 5;
 		}
 		i = (i - 3) % 5 ? i + 1 : i + 2;
 	}
