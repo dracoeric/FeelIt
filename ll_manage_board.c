@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 16:50:59 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 16:58:36 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int 			bigger_board(t_board **board, int nb_piece)
 	{
 		if (!((*board)->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
 		{
+			i--;
 			while (i > 0)
 			{
 				free((*board)->mat[i]);

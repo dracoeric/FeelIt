@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:48:57 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 16:48:25 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 17:04:41 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		nb_of_piece(t_piece *list)
 	return (count);
 }
 
-int		search_sol(t_piece *first_piece)
+t_board	*search_sol(t_piece *first_piece)
 {
 	t_board	*board;
 	t_piece	*to_place;
@@ -35,14 +35,14 @@ int		search_sol(t_piece *first_piece)
 
 	is_err = 0;
 	if (first_piece == NULL)
-		return (-1);
+		return (NULL);
 	board = NULL;
 	to_place = first_piece;
 	while (to_place != NULL)
 	{
 		is_err = bigger_board(&board, nb_of_piece(first_piece));
 		if (is_err)
-			return (-1);
+			return (NULL);
 		advance_pos(board, to_place);
 		place_piece(board, to_place);
 		to_place = to_place->next;
@@ -64,5 +64,5 @@ int		search_sol(t_piece *first_piece)
 			}
 		}
 	}
-	return (0);
+	return (board);
 }
