@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:30:01 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 12:58:47 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/16 16:26:05 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_putnbr(int n);
 void	ft_strclr(char *s);
 t_piece	*lst_last(t_piece **lst);
 
-int		add_piece_lst(t_piece **lst, char *buff);
+int		add_piece_lst(t_piece **lst, char *buff, char c);
 int		valid_input(char *buff);
 int		read_input(char *input, t_piece **lst);
 
