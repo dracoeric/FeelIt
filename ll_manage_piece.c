@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/15 16:56:35 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/16 13:17:23 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		test_pos(t_board *board, t_piece *piece)
 	row = piece->pos.row;
 	col = piece->pos.col;
 	i = 0;
+	if (piece->pos.row < 0)
+		return (0);
 	while (i < piece->col)
 	{
 		j = 0;
@@ -92,7 +94,7 @@ int		advance_pos(t_board *board, t_piece *piece)
 	{
 		piece->pos.row = -1;
 		piece->pos.col = -1;
-		return (0);
+		return (-1);
 	}
 	return (1);
 }
