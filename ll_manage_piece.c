@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/17 14:57:11 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/17 16:25:36 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	remove_piece(t_board *board, t_piece *piece)
 		{
 			if (piece->form[i][j] != '.')
 				board->mat[piece->pos.row + i][piece->pos.col + j] = '.';
-			j++;			
+			j++;
 		}
 		i++;
 	}
@@ -47,9 +47,9 @@ void	place_piece(t_board *board, t_piece *piece)
 		while (j < piece->col)
 		{
 			if (piece->form[i][j] != '.')
-				board->mat[piece->pos.row + i][piece->pos.col + j]
-					= piece->form[i][j];
-			j++;			
+				board->mat[piece->pos.row + i][piece->pos.col + j] =
+					piece->form[i][j];
+			j++;
 		}
 		i++;
 	}
@@ -74,7 +74,7 @@ int		test_pos(t_board *board, t_piece *piece)
 		{
 			if (piece->form[i][j] != '.' && board->mat[row + i][col + j] != '.')
 				return (0);
-			j++;			
+			j++;
 		}
 		i++;
 	}
