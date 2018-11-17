@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 14:48:09 by erli              #+#    #+#             */
-/*   Updated: 2018/11/16 18:11:04 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/17 14:57:11 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	remove_piece(t_board *board, t_piece *piece)
 	if (board == NULL || piece == NULL)
 		return ;
 	i = 0;
-	while (i < piece->col)
+	while (i < piece->row)
 	{
 		j = 0;
-		while (j < piece->row)
+		while (j < piece->col)
 		{
 			if (piece->form[i][j] != '.')
 				board->mat[piece->pos.row + i][piece->pos.col + j] = '.';
@@ -41,10 +41,10 @@ void	place_piece(t_board *board, t_piece *piece)
 	if (board == NULL || piece == NULL)
 		return ;
 	i = 0;
-	while (i < piece->col)
+	while (i < piece->row)
 	{
 		j = 0;
-		while (j < piece->row)
+		while (j < piece->col)
 		{
 			if (piece->form[i][j] != '.')
 				board->mat[piece->pos.row + i][piece->pos.col + j]
@@ -67,10 +67,10 @@ int		test_pos(t_board *board, t_piece *piece)
 	i = 0;
 	if (piece->pos.row < 0)
 		return (0);
-	while (i < piece->col)
+	while (i < piece->row)
 	{
 		j = 0;
-		while (j < piece->row)
+		while (j < piece->col)
 		{
 			if (piece->form[i][j] != '.' && board->mat[row + i][col + j] != '.')
 				return (0);
