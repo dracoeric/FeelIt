@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/17 14:56:10 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/17 15:53:43 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static	void	fill_board(t_board *board)
 
 	i = 0;
 	if (board == NULL)
-		return;
+		return ;
 	while (i < board->size + 3)
 	{
 		j = 0;
@@ -48,53 +48,67 @@ static	void	fill_board(t_board *board)
 	}
 }
 
-int 			bigger_board(t_board **board, int nb_piece)
+static	int		first_board(t_board **board, int nb_piece)
 {
 	int		size;
-	int 	i;
+	int		i;
 
-	size = (!*board ? smaller_square_size(nb_piece) : (*board)->size + 1);
-	if (*board != NULL)
-		free_mat((*board)->mat, (*board)->size + 3);
-	else
-	{
-		if (!((*board) = (t_board *)malloc(sizeof(t_board))))
-			return (-1);
-	}
+	size = smaller_square_size(nb_piece);
+	if (!((*board) = (t_board *)malloc(sizeof(t_board))))
+		return (0);
 	if (!((*board)->mat = (char **)malloc(sizeof(char *) * (size + 3))))
 	{
 		free(*board);
-		return (-1);
+		return (0);
 	}
 	i = 0;
 	while (i < size + 3)
 	{
 		if (!((*board)->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
 		{
-			i--;
-			while (i > 0)
-			{
-				free((*board)->mat[i]);
-				i--;
-			}
-			return (-1);
+			free_mat((*board)->mat, i - 1);
+			free(*board);
+			return (0);
 		}
 		i++;
 	}
 	(*board)->size = size;
 	fill_board(*board);
-	return (0);
+	return (1);
 }
 
-void			free_mat(char **mat, int nr)
+static	int		increase_board(t_board **board)
 {
-	int i;
+	int	size;
+	int	i;
 
-	i = 0;
-	while (i < nr)
+	size = (*board)->size + 1;
+	free_mat((*board)->mat, (*board)->size + 3);
+	if (!((*board)->mat = (char **)malloc(sizeof(char *) * (size + 3))))
 	{
-		free(mat[i]);
+		free(*board);
+		return (0);
+	}
+	i = 0;
+	while (i < size + 3)
+	{
+		if (!((*board)->mat[i] = (char *)malloc(sizeof(char) * (size + 2))))
+		{
+			free_mat((*board)->mat, i - 1);
+			free(*board);
+			return (0);
+		}
 		i++;
 	}
-	free(mat);
+	(*board)->size = size;
+	fill_board(*board);
+	return (1);
+}
+
+int				bigger_board(t_board **board, int nb_piece)
+{
+	if (*board == NULL)
+		return (first_board(board, nb_piece));
+	else
+		return (increase_board(board));
 }
