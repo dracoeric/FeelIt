@@ -53,10 +53,11 @@ static t_piece	*new_piece(char *buff, char c)
 		{
 			start = start == -1 ? i : start;
 			start = start % 5 <= i % 5 ? start : (i % 5) + (start / 5) * 5;
-			end = end + (i - end) % 5 + ((i - end) / 5) * 5;
+			end = end % 5 <= i % 5 ? i : i + (end - i + 5) % 5;
 		}
 		i = (i - 3) % 5 ? i + 1 : i + 2;
 	}
+//	printf("start is %i and the end is %i\n", start, end);
 	if (!(new = (t_piece *)malloc(sizeof(t_piece))))
 		return (NULL);
 	new->next = NULL;

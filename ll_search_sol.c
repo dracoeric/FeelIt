@@ -58,6 +58,8 @@ static void	search_loop(t_board **board, t_piece **to_place,
 			if ((*first_piece)->pos.row >= 0)
 			{
 				place_piece(*board, *to_place);
+				puts("Board state is");
+				print_board(*board);
 				*to_place = (*to_place)->next;
 			}
 		}

@@ -42,7 +42,6 @@ int			valid_input(char *buff)
 		return (0);
 	while (i < 19)
 	{
-		ft_putnbr(i);
 		if (buff[i] != '.' && buff[i] != '#')
 			return (0);
 		if (buff[i] == '#')
