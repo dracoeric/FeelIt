@@ -13,7 +13,7 @@
 NAME	=	fillit
 
 SRCS	=	ll_search_sol.c		ll_manage_piece.c	ll_manage_board.c	\
-			ft_putchar.c		ft_putnbr.c			ft_putstr.c			\
+			ft_putchar.c		\
 			ft_strclr.c			add_piece_lst.c		lst_last.c			\
 			lst_manipulators.c	valid_input.c		read_input.c		\
 			ll_print_board.c	ll_free_mat.c		main.c \
