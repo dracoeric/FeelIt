@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:52:14 by gly               #+#    #+#             */
-/*   Updated: 2018/11/19 13:23:41 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/19 15:13:13 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		read_input(int fd, t_piece **lst)
 		if (valid_input(buff) == 0 || add_piece_lst(lst, buff, c) == 0)
 			return (0);
 		c++;
-		ft_strclr(buff);
+		ft_strnclr(buff, BUFF_SIZE + 1);
 		ret = read(fd, buff, 1);
 		if (ret != 0 && buff[0] != '\n')
 			return (0);

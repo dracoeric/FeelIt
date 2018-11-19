@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 16:58:18 by gly               #+#    #+#             */
-/*   Updated: 2018/11/19 13:55:37 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/19 14:43:22 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(int ac, char **av)
 	}
 	solution = search_sol(lst);
 	print_board(solution);
+	ft_lstdelall(&lst);
 	free_mat(solution->mat, solution->size + 3);
 	free(solution);
 }
