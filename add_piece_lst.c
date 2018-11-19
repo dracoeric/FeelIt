@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:02:25 by gly               #+#    #+#             */
-/*   Updated: 2018/11/19 14:28:40 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/19 15:31:46 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int				add_piece_lst(t_piece **lst, char *buff, char c)
 	t_piece	*last;
 
 	if (!(elem = new_piece(buff, c)))
-	{
-		ft_lstdelall(lst);
 		return (0);
-	}
 	if (*lst == 0)
 		*lst = elem;
 	else
