@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:02:25 by gly               #+#    #+#             */
-/*   Updated: 2018/11/19 12:46:21 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/19 13:23:22 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,17 @@ static t_piece	*fill_piece(t_piece *new, char *buff, int start, char c)
 			return (NULL);
 		j = 0;
 		while (j < new->col)
-		{	
-			p = start + j + i * 5; 
+		{
+			p = start + j + i * 5;
 			new->form[i][j] = buff[p] == '#' ? c : '.';
 			j++;
 		}
 		i++;
 	}
+	new->next = NULL;
+	new->prev = NULL;
+	new->pos.row = -1;
+	new->pos.col = -1;
 	return (new);
 }
 
@@ -59,10 +63,6 @@ static t_piece	*new_piece(char *buff, char c)
 	}
 	if (!(new = (t_piece *)malloc(sizeof(t_piece))))
 		return (NULL);
-	new->next = NULL;
-	new->prev = NULL;
-	new->pos.row = -1;
-	new->pos.col = -1;
 	new->row = (end - start) / 5 + 1;
 	new->col = end % 5 - start % 5 + 1;
 	new = fill_piece(new, buff, start, c);
