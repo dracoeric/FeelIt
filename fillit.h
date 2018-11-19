@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:30:01 by gly               #+#    #+#             */
-/*   Updated: 2018/11/19 15:11:24 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/19 15:17:10 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int					advance_pos(t_board *bard, t_piece *piece);
 t_board				*search_sol(t_piece *list);
 void				print_board(t_board *board);
 void				print_piece(t_piece *piece);
+void				usage(void);
 
 void				ft_putchar(char c);
 void				ft_putstr(const char *str);
