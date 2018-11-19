@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 16:00:21 by erli              #+#    #+#              #
-#    Updated: 2018/11/19 14:30:24 by gly              ###   ########.fr        #
+#    Updated: 2018/11/19 14:41:39 by gly              ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,6 +37,7 @@ $(NAME)	:	$(OBJS) fillit.h
 			$(CC) $(CFLAG) $(INCL) $(OBJS) -o $(NAME)
 
 $(OBJSDIR)/%.o		:	%.c
+			@mkdir -p $(OBJSDIR)
 			$(CC) -c $(CFLAG) $(INCL) $< -o $@
 
 clean	:
