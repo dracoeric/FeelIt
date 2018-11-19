@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:48:57 by erli              #+#    #+#             */
-/*   Updated: 2018/11/17 16:20:12 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/19 12:46:54 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,20 @@ static	int	nb_of_piece(t_piece *list)
 	return (count);
 }
 
-static void	place_first_piece(t_board **board, t_piece **to_place)
+static int	place_first_piece(t_board **board, t_piece **to_place,
+		t_piece **first_piece)
 {
+	if (!bigger_board(board, nb_of_piece(*first_piece)))
+		return (0);
 	advance_pos(*board, *to_place);
+	while (!test_pos(*board, *to_place))
+	{
+		if (!bigger_board(board, nb_of_piece(*first_piece)))
+			return (0);
+	}
 	place_piece(*board, *to_place);
 	*to_place = (*to_place)->next;
+	return (1);
 }
 
 static void	search_loop(t_board **board, t_piece **to_place,
@@ -39,9 +48,8 @@ static void	search_loop(t_board **board, t_piece **to_place,
 {
 	while (*to_place != NULL)
 	{
-		if (!bigger_board(board, nb_of_piece(*first_piece)))
+		if (!place_first_piece(board, to_place, first_piece))
 			*board = NULL;
-		place_first_piece(board, to_place);
 		while ((*first_piece)->pos.row >= 0 && *to_place != NULL)
 		{
 			while (!test_pos(*board, *to_place)
@@ -58,8 +66,6 @@ static void	search_loop(t_board **board, t_piece **to_place,
 			if ((*first_piece)->pos.row >= 0)
 			{
 				place_piece(*board, *to_place);
-				puts("Board state is");
-				print_board(*board);
 				*to_place = (*to_place)->next;
 			}
 		}

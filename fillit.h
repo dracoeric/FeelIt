@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:30:01 by gly               #+#    #+#             */
-/*   Updated: 2018/11/17 16:27:20 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/19 11:46:19 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ t_piece	*lst_last(t_piece **lst);
 
 int		add_piece_lst(t_piece **lst, char *buff, char c);
 int		valid_input(char *buff);
-int		read_input(char *input, t_piece **lst);
+int		open_input(char *input);
+int		read_input(int fd, t_piece **lst);
 
 
 #endif

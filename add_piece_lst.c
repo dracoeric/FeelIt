@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:02:25 by gly               #+#    #+#             */
-/*   Updated: 2018/11/16 18:24:38 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/19 12:46:21 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static t_piece	*new_piece(char *buff, char c)
 		}
 		i = (i - 3) % 5 ? i + 1 : i + 2;
 	}
-//	printf("start is %i and the end is %i\n", start, end);
 	if (!(new = (t_piece *)malloc(sizeof(t_piece))))
 		return (NULL);
 	new->next = NULL;
