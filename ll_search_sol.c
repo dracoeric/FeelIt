@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:48:57 by erli              #+#    #+#             */
-/*   Updated: 2018/11/19 12:46:54 by gly              ###   ########.fr       */
+/*   Updated: 2018/11/20 15:41:26 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	search_loop(t_board **board, t_piece **to_place,
 	while (*to_place != NULL)
 	{
 		if (!place_first_piece(board, to_place, first_piece))
-			*board = NULL;
+			*to_place = NULL;
 		while ((*first_piece)->pos.row >= 0 && *to_place != NULL)
 		{
 			while (!test_pos(*board, *to_place)

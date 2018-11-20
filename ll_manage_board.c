@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:32:14 by erli              #+#    #+#             */
-/*   Updated: 2018/11/17 15:53:43 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/20 15:36:27 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static	int		first_board(t_board **board, int nb_piece)
 	int		i;
 
 	size = smaller_square_size(nb_piece);
-	if (!((*board) = (t_board *)malloc(sizeof(t_board))))
+	if (size == 0 || !((*board) = (t_board *)malloc(sizeof(t_board))))
 		return (0);
 	if (!((*board)->mat = (char **)malloc(sizeof(char *) * (size + 3))))
 	{
